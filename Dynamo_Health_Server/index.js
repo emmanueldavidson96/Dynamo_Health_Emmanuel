@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const user__router = require("./Routes/UserRoutes");
 // const blog__router = require("./Routes/BlogRoutes");
-const comment__router = require("./Routes/CommentRoutes");
+// const comment__router = require("./Routes/CommentRoutes");
 const cors = require("cors")
 const cookieParser = require("cookie-parser");
 const fs = require("fs")
@@ -32,7 +32,7 @@ application.get("/api", async (req, res) => {
 })
 application.use("/api/user", user__router);
 // application.use("/api/blog", blog__router);
-application.use("/api/comment", comment__router);
+// application.use("/api/comment", comment__router);
 
 
 //Database Connection and Server Start
