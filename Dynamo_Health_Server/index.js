@@ -15,10 +15,10 @@ application.use(express.json());
 application.use(cookieParser());
 application.use("/uploads", express.static(__dirname+"/uploads"));
 
-// application.use(cors({
-//     origin:"http://localhost:5173",
-//     credentials: true
-// }))
+application.use(cors({
+    origin:"http://localhost:5173",
+    credentials: true
+}))
 
 const PORT = process.env.PORT || 8000
 
