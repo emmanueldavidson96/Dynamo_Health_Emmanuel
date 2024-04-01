@@ -12,8 +12,8 @@ const fs = require("fs")
 const application = express(); 
 dotenv.config();
 application.use(express.json());
-// application.use(cookieParser());
-// application.use("/uploads", express.static(__dirname+"/uploads"));
+application.use(cookieParser());
+application.use("/uploads", express.static(__dirname+"/uploads"));
 
 // application.use(cors({
 //     origin:"http://localhost:5173",
