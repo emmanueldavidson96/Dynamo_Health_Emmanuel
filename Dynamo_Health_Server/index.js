@@ -4,9 +4,9 @@ const dotenv = require("dotenv");
 // const user__router = require("./Routes/UserRoutes");
 // const blog__router = require("./Routes/BlogRoutes");
 // const comment__router = require("./Routes/CommentRoutes");
-// const cors = require("cors")
-// const cookieParser = require("cookie-parser");
-// const fs = require("fs")
+const cors = require("cors")
+const cookieParser = require("cookie-parser");
+const fs = require("fs")
 
 //Application Middlewares
 const application = express(); 
