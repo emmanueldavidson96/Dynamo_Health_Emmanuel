@@ -14,10 +14,7 @@ const application = express();
 dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
-application.use(cors({
-    origin:"http://localhost:5173",
-    credentials: true
-}))
+application.use(cors());
 application.use("/uploads", express.static(path.join(__dirname,"/uploads")));
 const storage = multer.diskStorage({
     destination:(req, file,fn) => {
