@@ -42,6 +42,10 @@ export default function CreateANewBlog() {
         const response = await axios.post(URL+"api/blog/createblog",data,{withCredentials:true})
         navigate("/admindashboard")
     }
+
+    const handle__post__a__blog = async (e) => {
+        
+    }
   
     return (
     <CreateBlogSectionContainer>

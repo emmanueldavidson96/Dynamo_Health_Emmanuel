@@ -1,36 +1,29 @@
 const Blog = require("../Models/Blog");
-const fs = require("fs")
 const jwt = require("jsonwebtoken");
 
 
 //CREATE NEW BLOG
 const CreateBlogController = async (req, res) => {   
-    const {originalname, path} = req.file;
-    const parts = originalname.split('.');
-    const ext = parts[parts.length -1];
-    const newPath = path+"."+ext;
-    fs.renameSync(path,newPath);
-
     const {token} = req.cookies;
     jwt.verify(token,process.env.SECRET, {}, async (err, data) => {
         if (err) throw err;
-        const {
-            blogContent,
-            blogSummary,
-            blogTitle,
-            blogAuthor,
-            blogCategories,        
-        } = req.body
+        // const {
+        //     blogContent,
+        //     blogSummary,
+        //     blogTitle,
+        //     blogAuthor,
+        //     blogCategories,        
+        // } = req.body
 
-        const newBlog = new Blog({
-            blogContent,
-            blogSummary,
-            blogTitle,
-            featureImage:newPath,
-            blogAuthor,
-            blogCategories
-        })
-
+        // const newBlog = new Blog({
+        //     blogContent,
+        //     blogSummary,
+        //     blogTitle,
+        //     featureImage:newPath,
+        //     blogAuthor,
+        //     blogCategories
+        // })
+        const newBlog = new Blog(req.body)
         const saved__newblog = await newBlog.save()
         res.status(200).json(saved__newblog);
     })

@@ -6,27 +6,36 @@ const user__router = require("./Routes/UserRoutes");
 // const comment__router = require("./Routes/CommentRoutes");
 const cors = require("cors")
 const cookieParser = require("cookie-parser");
-const fs = require("fs")
+const path = require("path");
+const multer = require("multer");
 
 //Application Middlewares
 const application = express(); 
 dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
-application.use("/uploads", express.static(__dirname+"/uploads"));
-
 application.use(cors({
     origin:"http://localhost:5173",
     credentials: true
 }))
+application.use("/uploads", express.static(path.join(__dirname,"/uploads")));
+const storage = multer.diskStorage({
+    destination:(req, file,fn) => {
+        fn(null, "uploads")
+    },
+    filename:(req, file,fn)=> {
+        fn(null, req.body.img)
+    }
+})
+const upload = multer({storage:storage})
 
+//PORT
 const PORT = process.env.PORT || 8000
 
 //Application Endpoints
 application.get("/", async (req, res) => {
     res.send("Express API for Dynamo Health")
 })
-
 application.get("/api", async (req, res) => {
     res.send("Express API for Dynamo Health Together")
 })
@@ -34,6 +43,11 @@ application.use("/api/user", user__router);
 // application.use("/api/blog", blog__router);
 // application.use("/api/comment", comment__router);
 
+//MIDDLEWARE
+application.post("/api/upload",upload.single("file"),(req,res)=>{
+    // console.log(req.body)
+    res.status(200).json("Image has been uploaded successfully!")
+})
 
 //Database Connection and Server Start
 application.listen(PORT, async () => {
