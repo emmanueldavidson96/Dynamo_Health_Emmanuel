@@ -108,18 +108,19 @@ export const DashboardContainer = styled.div`
             .first__blog{
                 display: flex;
                 gap: 20px;
+                height: 400px;
                 @media screen and (max-width:1000px){
                     flex-direction: column;
                 }
                 .img_container{
-                    width: 40%;
+                    width: 40%; 
                     height: 100%;
                     @media screen and (max-width:1000px){
                         width: 100%;
                     }
                     img{
                         width: 100%;
-                        height: auto;
+                        height: 100%;
                     }
                 }
                 .blog__info__detail{

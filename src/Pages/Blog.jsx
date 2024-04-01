@@ -4,7 +4,7 @@ import logoImg from "../assets/logo.jpg";
 import { BlogContent } from '../Utils/data';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import {URL} from "../Utils/Url";
+import {ImageFolder, URL} from "../Utils/Url";
 
 function Blog() {
     const [blogPosts, setBlogPosts] = useState([]);
@@ -39,7 +39,7 @@ function Blog() {
                         blogPosts.map((blog) => 
                         <div className='blog'>
                             <Link to={`/blogcontent/${blog._id}`}>
-                                <img src={URL+blog.featureImage} />
+                                <img src={ImageFolder+blog.featureImage} />
                             </Link>
                             <h3>{blog.blogTitle}</h3>
                             <p>

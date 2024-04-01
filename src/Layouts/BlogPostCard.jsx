@@ -3,7 +3,7 @@ import blogImg from "../assets/About/360_F_578457559_8g2ghxx2u5WBBvfZnVEBn0lZHLg
 import {FaEdit} from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import {URL} from "../Utils/Url";
+import {URL, ImageFolder} from "../Utils/Url";
 import axios from "axios";
 
 export default function BlogPostCard({_id, blogAuthor, blogCategories, blogContent, blogSummary, blogTitle, createdAt, featureImage}) {
@@ -23,7 +23,7 @@ export default function BlogPostCard({_id, blogAuthor, blogCategories, blogConte
         </div>
         <div className='first__blog'>
             <Link to={`/blogcontent/${_id}`} className='img_container'>
-                <img src={URL+featureImage} alt="" />
+                <img src={ImageFolder+featureImage} alt="" />
             </Link>
             <div className='blog__info__detail'>
                 <Link to={`/blogcontent/${_id}`} className='blogtitle_container'>
@@ -35,7 +35,7 @@ export default function BlogPostCard({_id, blogAuthor, blogCategories, blogConte
                 <h4>Posted by {blogAuthor}</h4>
                 <div className='category__section'>
                     {
-                        blogCategories[0].split(",").map(cate => (
+                        blogCategories.map(cate => (
                             <p>{cate}</p>
                         ))
                     }                    

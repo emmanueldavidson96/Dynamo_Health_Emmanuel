@@ -18,6 +18,8 @@ export default function UpdateThisBlog() {
     const id = useParams().id;
     const navigate = useNavigate();
 
+    const [file, setFile] = useState(null);
+
     const addCategory = () => {
         let updatedCats = [...blogCategories];
         updatedCats.push(cat);
@@ -31,18 +33,35 @@ export default function UpdateThisBlog() {
         setCategories(updatedCats);
     }
 
-    const handle__editpost__blog = async (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        data.set('file', files[0])
-        data.set('blogTitle', blogTitle);
-        data.set("blogAuthor", blogAuthor);
-        data.set("blogContent", blogContent);
-        data.set("blogCategories", blogCategories);
-        data.set("blogSummary", blogSummary);
-        const response = await axios.put(URL+`api/blog/editpost/${id}`,data,{withCredentials:true})
-        navigate("/admindashboard");
-        console.log(response);
+    const handle__editpost__a__blog = async (e) => {
+        e.preventDefault()
+        const post = {
+            blogTitle,
+            blogSummary,
+            blogContent,
+            blogAuthor,
+            blogCategories
+        }
+        if(file){
+            const data= new FormData()
+            const filename = Date.now()+file.name
+            data.append("img", filename)
+            data.append("file", file)
+            post.featureImage = filename
+            try{
+                const imgUpload = await axios.post(URL+"api/upload", data)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+        try{
+            const res = await axios.post(URL+"api/blog/createblog",post,{withCredentials:true})
+            navigate("/admindashboard")
+        }
+        catch(err){
+            console.log(err)
+        }        
     }
   
     return (
@@ -50,7 +69,7 @@ export default function UpdateThisBlog() {
         <div className='createblog__section'>
             <h2>Update This Blog Post | Dynamo Health</h2>
             <form className='blog__form'>
-                <input type="file" onChange={(ev) => setFiles(ev.target.files) } />
+                <input type="file" onChange={(ev) => setFile(ev.target.files[0]) } />
                 <input type="text" placeholder='Blog Title...' onChange={(ev) => setBlogTitle(ev.target.value)} value={blogTitle} />
                 <input type="text" placeholder='Blog Summary...' onChange={(ev) => setBlogSummary(ev.target.value)} value={blogSummary}/>
                 <input type="text" placeholder='Blog Author...' onChange={(ev) => setBlogAuthor(ev.target.value)} value={blogAuthor}/>
@@ -69,7 +88,7 @@ export default function UpdateThisBlog() {
                         ))
                     }
                 </div>
-                <button type='submit' className='submit__btn' onClick={handle__editpost__blog}>Update Blog</button>
+                <button type='submit' className='submit__btn' onClick={handle__editpost__a__blog}>Update Blog</button>
             </form>
         </div>
     </UpdateThisBlogContainer>

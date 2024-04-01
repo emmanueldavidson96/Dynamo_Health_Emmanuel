@@ -49,15 +49,15 @@ export const BlogSection = styled.div`
             height: fit-content;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: flex-start;
             margin: 100px auto 50px auto;
-            gap: 15px;
+            gap: 40px;
             @media screen and (max-width:1000px){
                 flex-direction: column;
                 width: 85%;
             }
             .blog{
-                width: 32%;
+                width: 30%;
                 height: fit-content;
                 display: flex;
                 flex-direction: column;
@@ -97,6 +97,7 @@ export const BlogSection = styled.div`
                 .blog__info{
                     display: flex;
                     justify-content: space-between;
+                    flex-direction: column;
                     .author__blog__name{
                         font-weight: 800;
                     }

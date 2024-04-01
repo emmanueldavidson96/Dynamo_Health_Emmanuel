@@ -3,7 +3,7 @@ import { BlogContentContainer } from '../Styles/BlogContent.styled'
 import featuredImg from "../assets/Service/GettyImages-728756181-0372ea3082164dcd86cf6554ca70d318.webp";
 import storyImg from "../assets/Service/IV-Drip-400x334.webp";
 import axios from "axios";
-import { URL } from '../Utils/Url';
+import { URL, ImageFolder } from '../Utils/Url';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../ContextApi/AuthContext';
 import Comment from '../Components/Comment';
@@ -61,7 +61,7 @@ export default function BlogContent() {
 
             <div className='blog__content'>
                 <h2>{blog__data.blogTitle}</h2>
-                <img src={URL+blog__data.featureImage} alt="" />
+                <img src={ImageFolder+blog__data.featureImage} alt="" />
                 <div className='blog__content__data' dangerouslySetInnerHTML={{__html:blog__data.blogContent}} />
                 <div className='blog__comment__section'>
                     <h2>{getComments?.length} COMMENTS</h2>
