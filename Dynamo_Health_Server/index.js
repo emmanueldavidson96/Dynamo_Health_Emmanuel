@@ -14,7 +14,10 @@ const application = express();
 dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
-application.use(cors());
+application.use(cors({
+    origin:"https://dynamo-health.vercel.app",
+    credentials: true
+}))
 application.use("/uploads", express.static(path.join(__dirname,"/uploads")));
 const storage = multer.diskStorage({
     destination:(req, file,fn) => {
