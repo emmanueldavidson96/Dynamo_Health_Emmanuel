@@ -37,7 +37,7 @@ application.get("/", async (req, res) => {
     res.send("Express API for Dynamo Health")
 })
 application.get("/api", async (req, res) => {
-    res.send("Express API for Dynamo Health Together")
+    res.send("Express API for Dynamo Health Together API")
 })
 application.use("/api/user", user__router);
 application.use("/api/blog", blog__router);
