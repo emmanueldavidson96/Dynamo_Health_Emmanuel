@@ -15,7 +15,7 @@ dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
 application.use(cors({
-    origin:["https://dynamo-health.vercel.app","https://dynamo-health.vercel.app/createnewblogpost", "https://dynamo-health.vercel.app/register", "https://dynamo-health.vercel.app/login"],
+    origin:["https://dynamo-health.vercel.app","https://dynamo-health.vercel.app/createnewblogpost", "https://dynamo-health.vercel.app/register", "https://dynamo-health.vercel.app/login", "https://dynamo-health.vercel.app/admindashboard", "https://dynamo-health.vercel.app/blogcontent/:id", "https://dynamo-health.vercel.app/editcontent","https://dynamo-health.vercel.app/updateThisBlogInfo/:id"],
     methods: ['GET', 'PUT', 'UPDATE', 'DELETE', 'PATCH'],
     credentials: true
 }))
