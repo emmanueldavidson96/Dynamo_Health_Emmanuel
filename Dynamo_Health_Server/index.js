@@ -15,7 +15,7 @@ dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
 application.use(cors({
-    origin:"http://localhost:5173",
+    origin:["https://dynamo-health.vercel.app","https://dynamo-health.vercel.app/createnewblogpost", "https://dynamo-health.vercel.app/register", "https://dynamo-health.vercel.app/login"],
     methods: ['GET', 'PUT', 'UPDATE', 'DELETE', 'PATCH'],
     credentials: true
 }))
