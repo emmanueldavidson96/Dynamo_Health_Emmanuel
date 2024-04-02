@@ -79,8 +79,19 @@ const GetABlogInfo = async (req, res) => {
     }
 }
 
+const GetRecentBlogs = async (req, res) => {
+    try{
+        const recent_blogs = await Blog.find().sort({createdAt:-1}).limit(3)
+        res.status(200).json(recent_blogs)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
+
 exports.CreateBlogController = CreateBlogController;
 exports.UpdatedABlogController = UpdatedABlogController;
 exports.DeleteABlogController = DeleteABlogController;
 exports.GetAllPostBlogs = GetAllPostBlogs;
 exports.GetABlogInfo = GetABlogInfo;
+exports.GetRecentBlogs = GetRecentBlogs;

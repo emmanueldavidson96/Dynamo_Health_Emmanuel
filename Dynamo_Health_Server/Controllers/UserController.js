@@ -61,6 +61,19 @@ const CurrentLoggedInUserController = async (req, res) => {
     })
 }
 
+//GET USER INFORMATION
+const UserInformation = async (req, res) => {
+    const id = req.params.id;
+    try{
+        const user__info = await User.findById(id)
+        res.status(200).json(user__info)
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+}
+
 exports.RegisterUser = RegisterUser;
 exports.LoginUser = LoginUser;
 exports.CurrentLoggedInUserController = CurrentLoggedInUserController;
+exports.UserInformation = UserInformation;

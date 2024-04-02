@@ -8,5 +8,5 @@ router.put("/editpost/:id", BlogController.UpdatedABlogController);
 router.get("/blogs", BlogController.GetAllPostBlogs);
 router.get("/blog/:id", BlogController.GetABlogInfo);
 router.delete("/blog/:id", BlogController.DeleteABlogController);
-
+router.get("/blogs/recentblogs", BlogController.GetRecentBlogs);
 module.exports = router;
