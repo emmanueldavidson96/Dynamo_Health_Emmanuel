@@ -15,7 +15,7 @@ dotenv.config();
 application.use(express.json());
 application.use(cookieParser());
 application.use(cors({
-    origin:"*",
+    origin:"https://dynamo-health.vercel.app/(.*)",
     methods: ['GET', 'PUT', 'UPDATE', 'DELETE', 'PATCH'],
     credentials: true
 }))
