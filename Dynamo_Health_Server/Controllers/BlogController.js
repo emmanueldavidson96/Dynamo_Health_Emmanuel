@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 
 //CREATE NEW BLOG
 const CreateBlogController = async (req, res) => {   
-    const {token} = req.cookies;
-    jwt.verify(token,process.env.SECRET, {}, async (err, data) => {
-        if (err) throw err;
+    // const {token} = req.cookies;
+    // jwt.verify(token,process.env.SECRET, {}, async (err, data) => {
+    //     if (err) throw err;
         // const {
         //     blogContent,
         //     blogSummary,
@@ -23,10 +23,13 @@ const CreateBlogController = async (req, res) => {
         //     blogAuthor,
         //     blogCategories
         // })
-        const newBlog = new Blog(req.body)
-        const saved__newblog = await newBlog.save()
-        res.status(200).json(saved__newblog);
-    })
+        // const newBlog = new Blog(req.body)
+        // const saved__newblog = await newBlog.save()
+    //     // res.status(200).json(saved__newblog);
+    // })
+    const newBlog = new Blog(req.body)
+    const saved__newblog = await newBlog.save()
+    res.status(200).json(saved__newblog);
     
 }
 
