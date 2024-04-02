@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 export const BlogContentContainer = styled.div`
     width: 100vw;
-    height: fit-content;    
+    height: fit-content;   
+    position: relative;
     .blog__content__container{
         display: flex;
         width: 70%;
         margin: 150px auto 100px auto;
         justify-content: space-between;
-        gap: 30px;
+        position: relative;
         @media screen and (max-width:1000px){
             flex-direction: column;
+            gap: 50px;
         }
         .blog__information{
             width: 10%;
@@ -50,7 +52,55 @@ export const BlogContentContainer = styled.div`
                     font-size: 0.8rem;
                 }
             }
+        }
+        .blog__suggestions{
+            width: 25%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: rgba(45,139,11,1);
+            position: sticky;
+            top: 150px;
+            align-items: center;
+            h2{
+                font-size: 1.3rem;
+            }
+            @media screen and (max-width:1000px){
+                width: 100%;
+                position: static;
+            }            
+            .blog__suggest{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;     
+                border: none;
+                height: fit-content;
+                width: 100%;
+                align-items: center;
+                box-shadow: 3px 3px 10px rgba(45,139,11,0.25);
+                padding: 0px 0px 20px 0px;
+                border-radius: 10px;
+                img{
+                    width: 100%;
+                    object-fit: cover;
+                    aspect-ratio: 1.5;
+                    object-position: top;
 
+                }
+                .title_link{
+                    text-decoration: none;
+                    color: rgba(45,139,11,1);
+                    h3{
+                        font-size: 1rem;
+                        cursor: pointer;
+                    }
+                }
+                p{
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                }
+            }         
         }
         .blog__content{
             width: 50%;
@@ -61,6 +111,7 @@ export const BlogContentContainer = styled.div`
             color: rgba(45,139,11,1);
             @media screen and (max-width:1000px){
                 width: 100%;
+                position: static;
             }
             .blog__comments{
                 width: 100%;
@@ -90,13 +141,13 @@ export const BlogContentContainer = styled.div`
                             gap: 10px;
                         }
                         img{
-                            width:40px;
-                            height: 40px;
+                            width:35px;
+                            height: 35px;
                         }
                         .author__name__and__commentdate{
                             display: flex;
                             flex-direction: column;
-                            gap: 5px;
+                            gap: 1px;
                         }
                     }
                     .comment__content{
@@ -171,34 +222,7 @@ export const BlogContentContainer = styled.div`
                 }
             }
         }
-        .blog__suggestions{
-            width: 15%;
-            height: fit-content;
-            color: rgba(45,139,11,1);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            position: sticky;
-            top: 150px;
-            @media screen and (max-width:1000px){
-                width: 100%;
-            }
-            h2{
-                font-size: 1.3rem;
-            }
-            .blog__suggest{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                h3{
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                }
-                p{
-                    font-size: 0.8rem;
-                }
-            }
-        }
+        
     }
     
 `

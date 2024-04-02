@@ -8,6 +8,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../ContextApi/AuthContext';
 import Comment from '../Components/Comment';
 import Footer from '../Components/Footer';
+import RecentBlogsComponent from '../Components/RecentBlogsComponent';
 
 export default function BlogContent() {
     
@@ -15,13 +16,13 @@ export default function BlogContent() {
     const [blog__data, set__blog__data] = useState({})
     const [userComment, setUserComment] = useState("");
     const {currentUser, setCurrentUser} = useContext(UserContext);
+    const [recentblogs, set_recentblogs] = useState([]);
 
     const [getComments, setGetComments] = useState([]);
 
     const getThisBlogComment = async () => {
         const response = await axios.get(URL+`api/comment/blogcomment/${id}`, {withCredentials:true})
         setGetComments(response.data);
-        console.log(response.data);
     }
 
     const get_blog_details = async () => {
@@ -35,6 +36,12 @@ export default function BlogContent() {
         window.location.reload(true)
     }
 
+    const handle__recent__blogs = async () => {
+        const response = await axios.get(URL+`api/blog/blogs/recentblogs`)
+        set_recentblogs(response.data);  
+        console.log(response.data)  
+    }
+ 
     useEffect(() => {
         get_blog_details()
     }, [id])
@@ -42,6 +49,10 @@ export default function BlogContent() {
     useEffect(() => {
         getThisBlogComment()
     }, [id])
+
+    useEffect(() => {
+        handle__recent__blogs()
+    }, []);
     
   return (
     <BlogContentContainer>
@@ -82,31 +93,11 @@ export default function BlogContent() {
 
             <div className='blog__suggestions'>
                 <h2>RECENT ARTICLES</h2>
-                <div className='blog__suggest'>
-                    <h3>Fruits and Vegetables | What does to do to your Heart and Liver?</h3>
-                    <p>POST ON APRIL 30TH 2024</p>
-                </div>
-
-                <div className='blog__suggest'>
-                    <h3>Fruits and Vegetables | What does to do to your Heart and Liver?</h3>
-                    <p>POST ON APRIL 30TH 2024</p>
-                </div>
-
-                <div className='blog__suggest'>
-                    <h3>Fruits and Vegetables | What does to do to your Heart and Liver?</h3>
-                    <p>POST ON APRIL 30TH 2024</p>
-                </div>
-
-                <div className='blog__suggest'>
-                    <h3>Fruits and Vegetables | What does to do to your Heart and Liver?</h3>
-                    <p>POST ON APRIL 30TH 2024</p>
-                </div>
-
-                <div className='blog__suggest'>
-                    <h3>Fruits and Vegetables | What does to do to your Heart and Liver?</h3>
-                    <p>POST ON APRIL 30TH 2024</p>
-                </div>
-
+                {
+                    recentblogs.map(blog => (
+                        <RecentBlogsComponent blogTitle={blog.blogTitle} featureImage={blog.featureImage} blogSummary={blog.blogSummary} createdAt={blog.createdAt} _id={blog._id} />
+                    ))
+                }                
             </div>
         </div>
         <Footer/>

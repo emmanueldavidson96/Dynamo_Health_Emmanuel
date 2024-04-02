@@ -9,6 +9,7 @@ import {URL} from "../Utils/Url";
 function Comment({_id,authorId, blogId, commentWriteUp, createdAt, updatedAt}) {
     const [like, setLike] = useState(false);
     const [likes, setLikes] = useState(0);
+    const [commentowner, setcommentowner] = useState("")
 
     const handleDelete = async () => {
         const response = await axios.delete(URL+`api/comment/deletecomment/${_id}`)
@@ -28,14 +29,20 @@ function Comment({_id,authorId, blogId, commentWriteUp, createdAt, updatedAt}) {
     const handle__get__likes = async () => {
         const response = await axios.get(URL+`api/comment/blogcomment/likes/${_id}`)
         setLikes(response.data)
-        
+    }
+
+    const handle__get__comment__user = async () => {
+        const response = await axios.get(URL+`api/user/getuserinfo/${authorId}`)
+        console.log(response.data)
+        setcommentowner(response.data.username)
     }
 
     useEffect(() => {
         handle__get__likes()
-    }, [like])
-
-
+    }, [like])  
+    useEffect(() => {
+        handle__get__comment__user()
+    }, [])  
 
     
     
@@ -45,12 +52,11 @@ function Comment({_id,authorId, blogId, commentWriteUp, createdAt, updatedAt}) {
             <div className='comment__author__info__update-delete'>
                 <img src={img_placeholder} alt="" />
                 <div className='author__name__and__commentdate'>
-                    <h4>Person</h4>
-                    <h5>Reader</h5>
+                    <h4>Username</h4>
+                    <h5>{commentowner}</h5>
                 </div>
             </div>
             <div className='comment__authorfunctions'>
-                <FaEdit size={22} cursor={"pointer"} />
                 <RiDeleteBin6Line size={22} cursor={"pointer"} onClick={handleDelete} />
             </div>
         </div>

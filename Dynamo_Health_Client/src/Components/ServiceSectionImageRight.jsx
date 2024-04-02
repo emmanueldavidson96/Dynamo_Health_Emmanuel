@@ -3,8 +3,7 @@ import { ServiceContainer } from '../Styles/ServicesSection.styled'
 
 export default function ServicesSectionImageRight({name_of_service, description_of_service, picture}) {
   return (
-    <ServiceContainer>
-        
+    <ServiceContainer>        
         <div className='this__service'>
             <h3>{name_of_service}</h3>
             <hr />

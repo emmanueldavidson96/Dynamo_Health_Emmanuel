@@ -16,10 +16,10 @@ export default function BlogPostCard({_id, blogAuthor, blogCategories, blogConte
   return (
     <div className='all__blogs__container'> 
         <div className='blog__actions'>
-            <Link to={`/updateThisBlogInfo/${_id}`}>
-                <FaEdit size={30} color='rgba(45,139,11,0.9)' cursor={"pointer"}/>
+            <Link to={`/updateThisBlogInfo/${_id}`} className='edit__btn'>
+                <FaEdit size={25} color='rgba(45,139,11,0.9)' cursor={"pointer"}/>
             </Link>
-            <MdDeleteForever size={30} color='rgba(45,139,11,0.9)' cursor={"pointer"} onClick={handleDeleteBlog}/>          
+            <MdDeleteForever size={25} color='rgba(45,139,11,0.9)' cursor={"pointer"} onClick={handleDeleteBlog}/>          
         </div>
         <div className='first__blog'>
             <Link to={`/blogcontent/${_id}`} className='img_container'>

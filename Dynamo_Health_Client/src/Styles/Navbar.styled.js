@@ -118,7 +118,7 @@ export const NavbarContainer = styled.div`
         .navigation__section{
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             @media screen and (max-width: 800px){
                 display: none;
             }
@@ -126,10 +126,10 @@ export const NavbarContainer = styled.div`
                 text-decoration: none;
                 color: #fff;
                 text-transform: uppercase;
-                font-size: 0.65rem;
+                font-size: 0.75rem;
                 color: rgba(45,139,11,1);
                 font-weight: 700;
-                letter-spacing: 0.7px;
+                letter-spacing: 0.9px;
                 transition: ease-in-out all 0.5s;
                 &:hover{
                     transform: scale(1.2);
@@ -194,8 +194,6 @@ export const NavbarContainer = styled.div`
                     }
                 }
             }
-        }
-        
+        }        
     }
-
 `

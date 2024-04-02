@@ -43,7 +43,7 @@ export const DashboardContainer = styled.div`
         }
     }
     .dashboard__area{
-        width: 70%;
+        width: 65%;
         height: fit-content;
         display: flex;
         margin: 0px auto;
@@ -92,25 +92,32 @@ export const DashboardContainer = styled.div`
         .all__blogs__container{
             width: 100%;
             height: fit-content;
-            background-color: rgba(45,139,11,0.15);
-            padding: 20px;
+            background-color: rgba(45,139,11,0.12);
+            padding: 20px 50px 50px 50px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            box-shadow: 5px 5px 15px rgba(45,139,11,0.4);
             .blog__actions{
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: end;
                 gap: 20px;
+                .edit__btn{
+                    display: flex;
+                    align-items: center;
+                }
             }
             .first__blog{
                 display: flex;
-                gap: 20px;
-                height: 400px;
+                gap: 30px;
+                height: 250px;
+                width: 100%;
                 @media screen and (max-width:1000px){
                     flex-direction: column;
+                    height: fit-content;
                 }
                 .img_container{
                     width: 40%; 
