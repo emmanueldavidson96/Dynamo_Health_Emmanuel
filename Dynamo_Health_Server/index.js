@@ -43,6 +43,7 @@ application.get("/api", async (req, res) => {
 application.use("/api/user", user__router);
 application.use("/api/blog", blog__router);
 application.use("/api/comment", comment__router);
+// application
 
 //MIDDLEWARE
 application.post("/api/upload",upload.single("file"),(req,res)=>{
